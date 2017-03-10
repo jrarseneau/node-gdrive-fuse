@@ -676,7 +676,7 @@ function delete_files(){
     db.all("SELECT * from files ORDER BY atime, size ASC", function delete_files_callback(err, rows){
       _delete_files_(0,0,rows);
     });
-  }
+  if (global.gc) { global.gc(); }}
 }
 
 function _delete_files_(start,end, rows){
